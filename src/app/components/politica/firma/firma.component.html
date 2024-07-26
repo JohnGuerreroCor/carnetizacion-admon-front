@@ -1,0 +1,326 @@
+<app-navbar>
+  <div class="container mt-3 text-center">
+    <div class="card rounded-2 p-0 shadow-sm mt-5 mb-5">
+      <div
+        class="card-header text-center ml-4 mr-4 cursor-select"
+        [routerLink]="['/politicas']"
+        routerLinkActive="router-link-active"
+      >
+        <h4 class="font-usco-default">Firma Digital Rector o Rectora</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <form class="pl-4 pr-4" [formGroup]="formRector">
+              <div class="row text-left mb-2">
+                <div class="col">
+                  <h6 class="font-usco-gr font-weight-bold">
+                    Formulario para crear la firma digital:
+                  </h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <mat-form-field
+                        class="example-full-width custom-input"
+                        appearance="outline"
+                      >
+                        <mat-label>Nombre</mat-label>
+                        <input
+                          matInput
+                          formControlName="nombre"
+                          id="nombre"
+                          class="form_control"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <mat-form-field
+                        class="example-full-width custom-input"
+                        appearance="outline"
+                      >
+                        <mat-label>Dependencia</mat-label>
+                        <input
+                          matInput
+                          formControlName="dependencia"
+                          id="dependencia"
+                          class="form_control"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <mat-form-field
+                        class="example-full-width custom-input"
+                        appearance="outline"
+                      >
+                        <mat-label>Cargo</mat-label>
+                        <input
+                          matInput
+                          formControlName="cargo"
+                          id="cargo"
+                          class="form_control"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <mat-form-field
+                        class="example-full-width custom-input"
+                        appearance="outline"
+                      >
+                        <mat-label>Fecha Inicio</mat-label>
+                        <input
+                          type="date"
+                          formControlName="fechaInicio"
+                          id="fechaInicio"
+                          matInput
+                          class="form_control"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <mat-form-field
+                        class="example-full-width custom-input"
+                        appearance="outline"
+                      >
+                        <mat-label>Fecha Fin</mat-label>
+                        <input
+                          type="date"
+                          formControlName="fechaFin"
+                          id="fechaFin"
+                          matInput
+                          class="form_control"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mt-2" *ngIf="firmaExiste">
+                  <form action="">
+                    <label class="file example-full-width">
+                      <input
+                        type="file"
+                        accept="image/png"
+                        (change)="change($event); cambioArchivo($event)"
+                        aria-label="File browser example"
+                      />
+                      <span class="file-custom text-left">{{ nameFile }}</span>
+                    </label>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button
+                    class="btn btn-success mr-2"
+                    [disabled]="!formRector.valid"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="guardar"
+                    (click)="parametrosFirmaRegistrar()"
+                  >
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar
+                  </button>
+                  <!--  <button class="btn btn-usco-vt" [disabled]="!formRector.valid" data-toggle="tooltip"
+                    data-placement="top" title="cancelar" (click)="cancelar()"><i class="fa-solid fa-xmark"></i>
+                    Cancelar</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4 mr-5 ml-5 pl-5 pr-5">
+          <div class="col mr-5 ml-5 pl-5 pr-5">
+            <div
+              class="card-usco-carnet carnet-usco-body shadow p-2 mb-4 text-center"
+              id="carnet-usco-rotulo-back-mobile"
+              style="width: 400px; height: 600px"
+            >
+              <div class="row">
+                <div class="col mt-2">
+                  <img
+                    src="assets/universidad-surcolombiana-v.png"
+                    class="img-fluid div-usco-40"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col mt-1">
+                  <div class="row">
+                    <div class="col mt-2">
+                      <qrcode
+                        [qrdata]="qrCodeTwo"
+                        [width]="200"
+                        colorLight="#ffffff"
+                        colorDark="#1E262B"
+                        [errorCorrectionLevel]="'M'"
+                      ></qrcode>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col p-0">
+                  <div class="card-block px-3">
+                    <div class="row">
+                      <div class="col pl-4 pr-4">
+                        <h4
+                          class="font-usco-default font-weight-bold font-usco-bl pre leyenda-mobile"
+                        >
+                          {{ politicaEstudiante[0].descripcion }}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col">
+                  <img
+                    src="{{ fotoCarnet.url }}"
+                    class="card-img-top foto-usco cursor-select div-usco-30"
+                    style="width: 100px;"
+                  />
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col">
+                  <small
+                    *ngIf="
+                      (rector | json) != '[]' && rector[0].persona.genero == 'M'
+                    "
+                    class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                  >
+                    RECTOR
+                  </small>
+                  <small
+                    *ngIf="
+                      (rector | json) != '[]' && rector[0].persona.genero == 'F'
+                    "
+                    class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                  >
+                    RECTORA
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col">
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              class="table table-hover shadow"
+            >
+              <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>N°</th>
+                <td mat-cell *matCellDef="let element" class="font-sm-usco">
+                  {{ dataSource.filteredData.indexOf(element) + 1 }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Firma</th>
+                <td mat-cell *matCellDef="let element" class="font-sm-usco">
+                  {{ element.nombreFirma }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="inicio">
+                <th mat-header-cell *matHeaderCellDef>Creación</th>
+                <td mat-cell *matCellDef="let element" class="font-sm-usco">
+                  {{ element.fechaInicio | date : "dd-MM-yyyy" }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="fin">
+                <th mat-header-cell *matHeaderCellDef>Vigencia</th>
+                <td mat-cell *matCellDef="let element" class="font-sm-usco">
+                  {{ element.fechaFin | date : "dd-MM-yyyy" }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="opciones">
+                <th mat-header-cell *matHeaderCellDef>
+                  Vista / Estado / Opciones
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    class="btn btn-primary btn-sm mr-2"
+                    title="Ver firma"
+                    (click)="mostrarFirma(element.ruta)"
+                  >
+                    <i class="fa-solid fa-image"></i>
+                  </button>
+                  <button
+                    class="btn btn btn-success btn-sm mr-2"
+                    *ngIf="element.estado === 1"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Vigente"
+                  >
+                    <i class="fas fa-check-square"></i>
+                  </button>
+                  <button
+                    class="btn btn btn-secondary btn-sm mr-2"
+                    *ngIf="element.estado === 0"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Antiguo"
+                  >
+                    <i class="fas fa-minus-square"></i>
+                  </button>
+                  <button
+                    class="btn btn-usco-vt btn-sm"
+                    *ngIf="element.estado === 0"
+                    title="Desactivar"
+                    disabled
+                    (click)="actualizar(element)"
+                  >
+                    <i class="fa-solid fa-text-slash"></i>
+                  </button>
+                  <button
+                    class="btn btn-usco-vt btn-sm"
+                    *ngIf="element.estado === 1"
+                    title="Desactivar"
+                    (click)="actualizar(element)"
+                  >
+                    <i class="fa-solid fa-text-slash"></i>
+                  </button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator
+              [pageSizeOptions]="[10, 20, 30]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>

@@ -1,0 +1,128 @@
+<app-navbar>
+  <div class="container p-5">
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/estudiantes']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del estudiante y aclaración de la
+          dependencia que administra la información del estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Estudiante
+          </h5>
+          <img src="assets/user-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/virtual']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del estudiante virtual y aclaración de la
+          dependencia que administra la información del estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Est. Virtual
+          </h5>
+          <img src="assets/computer-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/intercambio']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del estudiante de formación virtual y
+          aclaración de la dependencia que administra la información del
+          estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Es. Intercambio
+          </h5>
+          <img src="assets/earth-americas-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/graduados']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del Gaduado y aclaración de la
+          dependencia que administra la información del estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Graduado
+          </h5>
+          <img src="assets/graduation-cap-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/docentes']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del Docente y aclaración de la
+          dependencia que administra la información del estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Docente
+          </h5>
+          <img
+            src="assets/chalkboard-user-solid.png"
+            class="card-img-top p-4"
+          />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/administrativos']"
+          #tooltip="matTooltip"
+          matTooltip="Consulta, cambio de foto del Administrativo y aclaración de la
+          dependencia que administra la información del estamento."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Administrativo
+          </h5>
+          <img src="assets/user-tie-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/inicio']"
+          #tooltip="matTooltip"
+          matTooltip="Volver al menú inicial."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Inicio
+          </h5>
+          <img src="assets/house-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>

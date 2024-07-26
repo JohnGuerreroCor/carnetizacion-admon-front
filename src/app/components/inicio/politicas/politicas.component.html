@@ -1,0 +1,56 @@
+<app-navbar>
+  <div class="container p-5">
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/leyenda']"
+          #tooltip="matTooltip"
+          matTooltip="Actualización de la leyenda que se refleja en la parte posterior del carnet por cada estamento de la
+          institución."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Leyenda
+          </h5>
+          <img src="assets/stamp-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/firma']"
+          #tooltip="matTooltip"
+          matTooltip="Registro y actualización de la firma digital de cada rector o rectora a cargo en la institución, el
+          sistema notifica el registro a la rectoría y el rector o rectora actual."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Firma
+          </h5>
+          <img src="assets/signature-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div
+          class="card h-100 cursor-select card-usco-menu shadow"
+          [routerLink]="['/inicio']"
+          #tooltip="matTooltip"
+          matTooltip="Volver al menú inicial."
+          matTooltipPosition="below"
+        >
+          <h5
+            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
+          >
+            Inicio
+          </h5>
+          <img src="assets/house-solid.png" class="card-img-top p-4" />
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>
