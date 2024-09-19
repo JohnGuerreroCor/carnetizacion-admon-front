@@ -8,14 +8,44 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
+  links = [
+    {
+      titulo: 'Carnets',
+      ruta: '/carnets',
+      icono: 'fa-solid fa-id-card fa-8x p-4 text-center color-icon color-icon',
+      info: 'Consulta, cambio de foto para los diferentes estamentos de la institución y aclaración de las dependencias que administran la información de cada estamento.',
+    },
+    {
+      titulo: 'Leyenda',
+      ruta: '/leyenda',
+      icono: 'fa-solid fa-stamp fa-8x p-4 text-center color-icon',
+      info: 'Generación de tiquetes de acceso para las personas externas a la institución.',
+    },
+    {
+      titulo: 'Tiquetes',
+      ruta: '/tiquetes',
+      icono: 'fa-solid fa-ticket fa-8x p-4 text-center color-icon',
+      info: 'Generación de tiquetes de acceso para las personas externas a la institución.',
+    },
+    {
+      titulo: 'Reportes',
+      ruta: '/reportes',
+      icono: 'fa-solid fa-chart-simple fa-8x p-4 text-center color-icon',
+      info: 'Consulta y generación de los reportes específico y detallado de ingreso y salida por cada puesto de vigilancia y sedes de la institución.',
+    },
+  ];
   anio!: number;
   fecha = new Date();
   url: string = environment.URL_BACKEND;
 
-  constructor(public auth: AuthService, private router: Router, public ubicacionService: UbicacionService) { }
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    public ubicacionService: UbicacionService
+  ) {}
 
   ngOnInit() {
     if (!this.auth.isAuthenticated()) {
@@ -35,34 +65,27 @@ export class InicioComponent implements OnInit {
       icon: 'error',
       title: 'Oops...',
       text: 'Ocurrio Un Error!',
-    })
-
+    });
   }
 
   mensajeSuccses() {
     Swal.fire({
-
       icon: 'success',
       title: 'Proceso Realizado',
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   }
 
   fError(er: any): void {
-
     let err = er.error.error_description;
-    let arr: string[] = err.split(":");
+    let arr: string[] = err.split(':');
 
-    if (arr[0] == "Access token expired") {
-
+    if (arr[0] == 'Access token expired') {
       this.auth.logout();
       this.router.navigate(['login']);
-
     } else {
       this.mensajeError();
     }
-
   }
-
 }

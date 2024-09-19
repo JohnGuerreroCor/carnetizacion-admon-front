@@ -1,90 +1,20 @@
 <app-navbar>
   <div class="container p-5">
-    <div class="row row-cols-1 row-cols-md-4">
-      <div class="col mb-4">
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4" *ngFor="let link of links">
         <div
           class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/tiquete-invitados']"
+          [routerLink]="link.ruta"
           #tooltip="matTooltip"
-          matTooltip="Registro, actualización de correo, generación de tiquete de acceso, asignación de foto y
-          parametrización con fecha de ingreso y salida de los invitados que tenga la institución."
+          [matTooltip]="link.info"
           matTooltipPosition="below"
         >
           <h5
             class="card-header pt-3 text-center font-usco-vt font-weight-bold"
           >
-            Invitados
+            {{ link.titulo }}
           </h5>
-          <img
-            src="assets/users-rectangle-solid.png"
-            class="card-img-top p-4"
-          />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/tiquete-visitantes']"
-          #tooltip="matTooltip"
-          matTooltip="Registro, actualización de correo, generación de tiquete de
-          acceso con una vigencia de 24 horas."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Visitantes
-          </h5>
-          <img src="assets/users-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/tiquete-eventos']"
-          #tooltip="matTooltip"
-          matTooltip="Registro y generación masiva de tiquetes de acceso con una
-          vigencia de 24 horas para eventos Institucionales."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Eventos
-          </h5>
-          <img src="assets/people-group-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/tiquete-ileusco']"
-          #tooltip="matTooltip"
-          matTooltip="Generación y envío de tiquetes para estudiantes de ILEUSCO."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            ILEUSCO
-          </h5>
-          <img src="assets/earth-americas-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/inicio']"
-          #tooltip="matTooltip"
-          matTooltip="Volver al menú inicial."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Inicio
-          </h5>
-          <img src="assets/house-solid.png" class="card-img-top p-4" />
+          <i class="{{ link.icono }}"></i>
         </div>
       </div>
     </div>

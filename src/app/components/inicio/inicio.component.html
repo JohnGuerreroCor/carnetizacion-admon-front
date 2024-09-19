@@ -1,74 +1,20 @@
 <app-navbar>
   <div class="container p-5">
-    <div class="row row-cols-1 row-cols-md-4">
-      <div class="col mb-4">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4" *ngFor="let link of links">
         <div
           class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/carnets']"
+          [routerLink]="link.ruta"
           #tooltip="matTooltip"
-          matTooltip="Consulta, cambio de foto para los diferentes estamentos de la
-          institución y aclaración de las dependencias que administran la
-          información de cada estamento."
+          [matTooltip]="link.info"
           matTooltipPosition="below"
         >
           <h5
             class="card-header pt-3 text-center font-usco-vt font-weight-bold"
           >
-            Carnets
+            {{ link.titulo }}
           </h5>
-          <img src="assets/id-card-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/leyenda']"
-          #tooltip="matTooltip"
-          matTooltip="Actualización de la leyenda que se refleja en la parte posterior del carnet por cada estamento de la
-          institución."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Leyenda
-          </h5>
-          <img src="assets/stamp-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/tiquetes']"
-          #tooltip="matTooltip"
-          matTooltip="Generación de tiquetes de acceso para las personas externas a la
-          institución."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Tiquetes
-          </h5>
-          <img src="assets/ticket-solid.png" class="card-img-top p-4" />
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div
-          class="card h-100 cursor-select card-usco-menu shadow"
-          [routerLink]="['/reportes']"
-          #tooltip="matTooltip"
-          matTooltip="Consulta y generación de los reportes específico y detallado de
-          ingreso y salida por cada puesto de vigilancia y sedes de la
-          institución."
-          matTooltipPosition="below"
-        >
-          <h5
-            class="card-header pt-3 text-center font-usco-vt font-weight-bold"
-          >
-            Reportes
-          </h5>
-          <img src="assets/chart-simple-solid.png" class="card-img-top p-4" />
+          <i class="{{ link.icono }}"></i>
         </div>
       </div>
     </div>
